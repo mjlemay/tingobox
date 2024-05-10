@@ -13,7 +13,7 @@ Install the node dependencies and run the start command!
 ``
 npm install
 npm start
-```
+``
 
 ## Resources for Learning Electron
 
