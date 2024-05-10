@@ -1,0 +1,25 @@
+{
+  "name": "tingobox",
+  "version": "1.0.0",
+  "description": "a presentation app built in electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mjlemay/tingobox.git"
+  },
+  "keywords": [
+    "leaderboard",
+    "gameshow",
+    "presenation",
+    "rfid"
+  ],
+  "author": "Michael LeMay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjlemay/tingobox/issues"
+  },
+  "homepage": "https://github.com/mjlemay/tingobox#readme"
+}
