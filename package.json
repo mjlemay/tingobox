@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/mjlemay/tingobox/issues"
   },
-  "homepage": "https://github.com/mjlemay/tingobox#readme"
+  "homepage": "https://github.com/mjlemay/tingobox#readme",
+  "devDependencies": {
+    "electron": "^30.0.3"
+  }
 }
