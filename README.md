@@ -20,4 +20,3 @@ npm start
 - [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
 - [Electron Fiddle](https://electronjs.org/fiddle) - Electron Fiddle, an app to test small Electron experiments
 - [Tutorial](https://electronjs.org/docs/latest/tutorial/tutorial-prerequisites) - learn more
-
