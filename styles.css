@@ -1,3 +1,23 @@
 /* styles.css */
+html {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    cursor: default;
+    background-color: #000;
+    color:aliceblue;
+  }
+  
+  input, textarea, select, button, img {
+    -webkit-user-drag: none;
+  }
+  
+  .draggable {
+    -webkit-app-region: drag;
+  }
+  
+  .selectable {
+    -webkit-user-select: auto;
+    cursor: auto;
+  }
 
 /* Add styles here to customize the appearance of your app */
