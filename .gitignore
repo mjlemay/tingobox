@@ -24,4 +24,11 @@ logs
 
 # Environment variables
 .env*
+
+# Build Folders
 out/
+dist/
+
+# Misc 
+.DS_Store
+**/.DS_Store
