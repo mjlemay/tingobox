@@ -1,0 +1,1 @@
+// test type file to check of tsc is working
