@@ -8,12 +8,14 @@ declare const MAIN_WINDOW_VITE_NAME: string;
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    show: false, 
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+
+  mainWindow.maximize();
+  mainWindow.show();
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);

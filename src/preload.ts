@@ -10,12 +10,13 @@
 const versionsCheckArr = ['chrome', 'node', 'electron'];
 
 window.addEventListener('DOMContentLoaded', () => {
-  const replaceText = (selector:string, text:string) => {
-    const element = document.getElementById(selector)
-    if (element) element.innerText = text
-  }
+  // TODO: remove test code but here as a example
+  // const replaceText = (selector:string, text:string) => {
+  //   const element = document.getElementById(selector)
+  //   if (element) element.innerText = text
+  // }
 
-  for (const packageType of versionsCheckArr) {
-    replaceText(`${packageType}-version`, process.versions['electron']!)
-  }
+  // for (const packageType of versionsCheckArr) {
+  //   replaceText(`${packageType}-version`, process.versions['electron']!)
+  // }
 })
