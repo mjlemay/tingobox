@@ -1,21 +1,26 @@
 import React from 'react';
 import './app.css';
+import CappyTingo from './svg/capytingo';
+import Tingobox from './svg/tingobox';
 
 function App() {
   return (
-    <div className='h-screen flex items-center justify-center bg-gray-700'>
-      <div className='grow text-center'>
-        <div className='card'>
-          <h1 className='text-red-600'>TINGOBOX</h1>
-          <h3>A BOX OF WONDERS</h3>
-        </div>
-      </div>
-      <div className='grow justify-center'>
-        <div className='card'>
-          <h3>Recent Projects</h3>
-          <button>Blank Project</button>
-          <button>View Project Templates</button>
-          <h3>Recent Projects</h3>
+    <div
+      className='h-screen bg-indigo-200 flex flex-row min-h-screen justify-center items-center'
+    >
+      <div
+        className='w-[800px] h-[600px]'
+      >
+        <div className='flex flex-row items-center'>
+          <div className='grow'>
+            <div className='flex flex-col h-[600px] w-[300px] items-center justify-center'>
+              <Tingobox />
+              <CappyTingo />
+            </div>
+          </div>
+          <div className='grow'>
+            <h3>Recent Projects</h3>
+          </div>
         </div>
       </div>
     </div>
