@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './app.css';
+import CappyTingo from './svg/capytingo.tsx';
+import Tingobox from './svg/tingobox.tsx';
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
-    <div className='App'>
-      <h1>Electron + Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          This includes react!
-        </p>
+    <div
+      className='h-screen bg-indigo-200 flex flex-row min-h-screen justify-center items-center'
+    >
+      <div
+        className='w-[800px] h-[600px]'
+      >
+        <div className='flex flex-row items-center'>
+          <div className='grow'>
+            <div className='flex flex-col h-[600px] w-[300px] items-center justify-center'>
+              <Tingobox />
+              <CappyTingo />
+            </div>
+          </div>
+          <div className='grow'>
+            <h3>Recent Projects</h3>
+          </div>
+        </div>
       </div>
     </div>
   )
