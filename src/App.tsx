@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.css';
-import CappyTingo from './svg/capytingo';
-import Tingobox from './svg/tingobox';
+import CappyTingo from './svg/capytingo.tsx';
+import Tingobox from './svg/tingobox.tsx';
 
 function App() {
   return (

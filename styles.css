@@ -3,7 +3,6 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
-  -webkit-user-select: none;
   -webkit-user-drag: none;
   cursor: default;
 }
@@ -36,7 +35,6 @@ input, textarea, select, button, img {
 }
 
 .selectable {
-  -webkit-user-select: auto;
   cursor: auto;
 }
 
