@@ -8,7 +8,7 @@
     "lint": "echo \"No linting configured\"",
     "start": "tsc && electron-forge start",
     "package": "tsc && electron-forge package",
-    "make": "electron-forge make"
+    "make": "tsc && electron-forge make"
   },
   "repository": {
     "type": "git",
