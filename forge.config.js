@@ -30,11 +30,11 @@ module.exports = {
       config: {
         build: [
           {
-            entry: 'src/main.js',
+            entry: 'src/main.ts',
             config: 'vite.main.config.mjs'
           },
           {
-            entry: 'src/preload.js',
+            entry: 'src/preload.ts',
             config: 'vite.preload.config.mjs'
           }
         ],
