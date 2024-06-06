@@ -1,9 +1,13 @@
 import React from 'react';
 import './app.css';
 import Block from './components/block.tsx';
+import Button from './components/button.tsx';
 import CappyTingo from './svg/capytingo.tsx';
-import Tingobox from './svg/tingobox.tsx';
 import MenuItem from './components/menuItem.tsx';
+import Tingobox from './svg/tingobox.tsx';
+
+import ProjectIcon from './svg/projectIcon';
+
 
 function App() {
   return (
@@ -29,6 +33,9 @@ function App() {
                   <MenuItem label="Game Night Quiz" />
                   <MenuItem label="Tabletop Loot Chart Concerning Potions of Healing" />
                 </div>
+              </Block>
+              <Block title="Quick Actions">
+                <Button suffix={<ProjectIcon />}>New Project</Button>
               </Block>
             </div>
           </div>
