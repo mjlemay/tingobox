@@ -1,7 +1,9 @@
 import React from 'react';
 import './app.css';
+import Block from './components/block.tsx';
 import CappyTingo from './svg/capytingo.tsx';
 import Tingobox from './svg/tingobox.tsx';
+import MenuItem from './components/menuItem.tsx';
 
 function App() {
   return (
@@ -19,7 +21,16 @@ function App() {
             </div>
           </div>
           <div className='grow'>
-            <h3>Recent Projects</h3>
+            <div className="flex flex-col h-[600px] w-[300px] justify-center">
+              <Block title="Recent Projects">
+                <div className="flex flex-col gap-2">
+                  <MenuItem label="Awesome Project" />
+                  <MenuItem label="High Score Table" />
+                  <MenuItem label="Game Night Quiz" />
+                  <MenuItem label="Tabletop Loot Chart Concerning Potions of Healing" />
+                </div>
+              </Block>
+            </div>
           </div>
         </div>
       </div>
