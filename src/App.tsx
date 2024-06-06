@@ -11,7 +11,7 @@ function App() {
       className='h-screen bg-indigo-200 flex flex-row min-h-screen justify-center items-center'
     >
       <div
-        className='w-[800px] h-[600px]'
+        className='w-[800px] h-[600px] merdee'
       >
         <div className='flex flex-row items-center'>
           <div className='grow'>

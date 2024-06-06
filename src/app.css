@@ -9,6 +9,15 @@
     src: url('../assets/fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Merdee';
+    src: url('../assets/fonts/Merdee/Merdee-Regular.ttf');
+}
+
 html {
     font-family: 'OpenSans';
+}
+
+.merdee {
+    font-family: 'Merdee';
 }
