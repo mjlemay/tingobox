@@ -3,8 +3,8 @@ import ProjectIcon from '../svg/projectIcon';
 
 interface MenuItemProps {
     children?: React.ReactNode;
-    iconBGColor?: String;
-    label: String;
+    iconBGColor?: string;
+    label: string;
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
   }
