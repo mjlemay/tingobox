@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './button';
 import Input from './input';
-import ThumbsUpIcon from '../svg/thumbsupIcon';
+import ThumbsUpIcon from '../svg/thumbsUpIcon';
 
 interface NewProjectProps {
     actionHandler: Function;

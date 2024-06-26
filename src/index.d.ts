@@ -1,0 +1,1 @@
+declare const sqlite: typeof import('./services/projectService').default;
