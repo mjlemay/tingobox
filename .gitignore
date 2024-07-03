@@ -90,3 +90,7 @@ typings/
 
 # Electron-Forge
 out/
+
+# SQL Lite Cache
+*.db-shm
+*.db-wal

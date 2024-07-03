@@ -25,8 +25,8 @@ interface NewProjectProps {
     }
 
     const createNewProject = () => {
-        console.log(form);
-        actionHandler('workspaceView');
+        addProject(form);
+        actionHandler('home');
     }
   
     return (
