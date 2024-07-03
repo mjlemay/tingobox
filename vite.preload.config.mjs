@@ -18,9 +18,9 @@ export default defineConfig((env) => {
         // Preload scripts may contain Web assets, so use the `build.rollupOptions.input` instead `build.lib.entry`.
         input: forgeConfigSelf.entry,
         output: {
-          format: 'cjs',
+          format: 'iife',
           // It should not be split chunks.
-          inlineDynamicImports: true,
+          inlineDynamicImports: false,
           entryFileNames: '[name].js',
           chunkFileNames: '[name].js',
           assetFileNames: '[name].[ext]',
@@ -28,6 +28,10 @@ export default defineConfig((env) => {
       },
     },
     plugins: [pluginHotRestart('reload')],
+    resolve: {
+      preserveSymlinks: true,
+
+    },
   };
 
   return mergeConfig(getBuildConfig(forgeEnv), config);

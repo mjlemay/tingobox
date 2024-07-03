@@ -1,15 +1,13 @@
 const { contextBridge } = require('electron');
-const projectDB = require('./services/projectService');
+import { getProjects } from './services/projectService';
 
+export {};
 const versionsCheckArr = ['chrome', 'node', 'electron'];
-
-contextBridge.exposeInMainWorld('sqlite', {
-  projectDB,
-})
+contextBridge.exposeInMainWorld('getProjects', getProjects);
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  for (const type of ['chrome', 'node', 'electron']) {
+  for (const type of versionsCheckArr) {
     console.log(`${type}-version`, process.versions[type]);
   }
 })

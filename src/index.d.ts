@@ -1,1 +1,1 @@
-declare const sqlite: typeof import('./services/projectService').default;
+declare const getProjects: typeof import('./services/projectService').getProjects;

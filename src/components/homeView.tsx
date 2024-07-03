@@ -20,7 +20,8 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
   const [ hasFetched, setFetched ] = useState(false);
 
   const fetchData = useCallback(() => {
-    // const data = sqlite.projectDB?.getProjects()
+    console.log('getProjects', getProjects());
+    // const data = sqlite.projectDB?.getProjects();
     const data = [{ name: 'banana'}];
     setProjects(data)
     setFetched(true);
