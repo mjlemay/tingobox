@@ -26,7 +26,7 @@ interface NewProjectProps {
 
     const createNewProject = () => {
         addProject(form);
-        actionHandler('home');
+        actionHandler('view','home');
     }
   
     return (
@@ -38,7 +38,7 @@ interface NewProjectProps {
         </div>
         <Button suffix={<ThumbsUpIcon />} handleAction={() => createNewProject()}>LET'S GOOO!</Button>
         <div 
-            onClick={() => actionHandler && actionHandler('home')}
+            onClick={() => actionHandler && actionHandler('view','home')}
             className='hover:bg-[#ef79ac33] cursor-pointer my-2'
         >
                 eh, nevermind

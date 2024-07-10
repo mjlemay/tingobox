@@ -7,13 +7,17 @@ interface MenuItemProps {
     label: string;
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
+    handleAction?: Function; 
   }
   
   export default function MenuItem(props:MenuItemProps):JSX.Element {
-    const { children, iconBGColor, label, prefix, suffix } = props;
+    const { children, handleAction, iconBGColor, label, prefix, suffix } = props;
   
     return (
-      <div className='flex flex-row gap-2 hover:bg-[#ef79ac33] rounded-lg cursor-pointer'>
+      <div
+        className='flex flex-row gap-2 hover:bg-[#ef79ac33] rounded-lg cursor-pointer'
+        onClick={() => handleAction && handleAction()}
+      >
         <div 
             className={
                 `flex grow-0 items-center justify-center min-w-10 max-w-10 w-10 min-h-10 max-h-10 h-10 rounded-lg border-2 border-solid border-gray-800 ${iconBGColor ?  iconBGColor : 'bg-stone-200'}`

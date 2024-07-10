@@ -36,12 +36,18 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
         <Block title="Recent Projects">
               <div className="flex flex-col gap-2">
                 {projects && projects.map(project => {
-                  return <MenuItem key={`$_item_${project.name}`} label={project.name} />
+                  return (
+                    <MenuItem 
+                      key={`$_item_${project.name}`}
+                      label={project.name} 
+                      handleAction={() => actionHandler('screen', 'workspace')}
+                    />
+                  )
                 })}
               </div>
             </Block>
             <Block title="Quick Actions">
-              <Button suffix={<ProjectIcon />} handleAction={() => actionHandler('newProject')}>New Project</Button>
+              <Button suffix={<ProjectIcon />} handleAction={() => actionHandler('view', 'newProject')}>New Project</Button>
             </Block>
     </>
   )

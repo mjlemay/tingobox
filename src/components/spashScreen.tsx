@@ -5,16 +5,20 @@ import HomeView from './homeView.tsx';
 import NewProjectView from './newProjectView.tsx';
 
 interface SplashScreenProps {
-    children?: React.ReactNode;
-  }
+  children?: React.ReactNode;
+  screenActionHandler: Function;
+}
   
   export default function SplashScreen(props:SplashScreenProps):JSX.Element {
-    const { children } = props;
+    const { children, screenActionHandler } = props;
     const [ view, setView ] = useState('home');
 
-    const handleAction = (action:string) => {
-      if (action) {
-        setView(action);
+    const handleAction = (action:string, value:string) => {
+      if (action == 'view') {
+        setView(value);
+      }
+      if (action == 'screen') {
+        screenActionHandler(value);
       }
     }
   
