@@ -13,12 +13,12 @@ interface SplashScreenProps {
     const { children, screenActionHandler } = props;
     const [ view, setView ] = useState('home');
 
-    const handleAction = (action:string, value:string) => {
+    const handleAction = (action:string, value:string, payload:object) => {
       if (action == 'view') {
         setView(value);
       }
       if (action == 'screen') {
-        screenActionHandler(value);
+        screenActionHandler(value, payload);
       }
     }
   

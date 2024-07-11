@@ -1,7 +1,7 @@
 import React from 'react';
 
 type basicProject = {
-    name:string;
+    name: string;
     description?: string;
 }
 interface WorkspaceScreenProps {
@@ -11,14 +11,27 @@ interface WorkspaceScreenProps {
   }
   
   export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element {
-    const { selectedProject } = props;
+    const defaultProject = { name: 'Undefined', description: '' };
+    const { selectedProject = defaultProject } = props;
+    const { name, description = '' } = selectedProject;
   
     return (
         <div
-        className='w-[800px] h-[600px]'
+        className="h-screen w-screen"
       >
-        <h1>Workspace</h1>
-        {JSON.stringify(selectedProject)}
+        <div data-id="header" 
+          className="h-[40px] w-screen bg-indigo-400 border-1 border-solid border-indigo-500 flex justify-between items-center"
+        >
+          <div data-id="left-head-bar" className="flex-initial"></div>
+          <div data-id="main-head-bar">
+            <h1 className="text-xl">{name}</h1>
+          </div>
+          <div data-id="right-head-bar" className="flex-initial"></div>
+        </div>
+        <div>
+          <div data-id="sideBar"></div>
+          <div data-id="deskTop"></div>
+        </div>
       </div>
     )
   }

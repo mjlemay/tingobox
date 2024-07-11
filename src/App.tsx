@@ -7,10 +7,12 @@ import WorkSpaceScreen from './components/workspaceScreen.tsx';
 function App() {
 
   const [ screen, setScreen ] = useState('splash');
+  const [ project, setProject ] = useState();
 
-  const handleAction = (action:string) => {
+  const handleAction = (action:string, payload:object) => {
     if (action) {
       setScreen(action);
+      setProject(payload);
     }
   }
 
@@ -19,7 +21,7 @@ function App() {
       className='h-screen bg-indigo-200 flex flex-row min-h-screen justify-center items-center'
     >
       {screen == 'splash' && <SplashScreen screenActionHandler={handleAction} />}
-      {screen == 'workspace' && <WorkSpaceScreen screenActionHandler={handleAction} />}
+      {screen == 'workspace' && <WorkSpaceScreen screenActionHandler={handleAction} selectedProject={project} />}
     </div>
   )
 }

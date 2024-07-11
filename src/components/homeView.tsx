@@ -40,7 +40,7 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
                     <MenuItem 
                       key={`$_item_${project.name}`}
                       label={project.name} 
-                      handleAction={() => actionHandler('screen', 'workspace')}
+                      handleAction={() => actionHandler('screen', 'workspace', project)}
                     />
                   )
                 })}
