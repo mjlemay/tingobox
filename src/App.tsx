@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import './app.css';
 import SplashScreen from './components/spashScreen.tsx';
 import WorkSpaceScreen from './components/workspaceScreen.tsx';
+import { defaultProject, basicProjectType } from './constants/defaults.ts';
 
 
 function App() {
 
   const [ screen, setScreen ] = useState('splash');
-  const [ project, setProject ] = useState();
+  const [ project, setProject ] = useState(defaultProject as basicProjectType);
 
-  const handleAction = (action:string, payload:object) => {
+  const handleAction = (action:string, payload:basicProjectType) => {
     if (action) {
       setScreen(action);
       setProject(payload);
