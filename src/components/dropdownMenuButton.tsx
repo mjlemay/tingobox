@@ -1,9 +1,7 @@
 import React from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import {
-  GearIcon,
   HamburgerMenuIcon,
-  Pencil1Icon,
 } from '@radix-ui/react-icons';
 
 type DropdownMenuItem = {
@@ -40,12 +38,12 @@ export default function DropdownMenuButton(props:DropdownMenuButtonProps):JSX.El
         >
           {
             menuItems.map((menuItem, index) => {
-              const { icon = <></>, label = '', clickHandler} = menuItem
+              const { icon = <></>, label = '', clickHandler = ()=>{}} = menuItem
               return (
                 <DropdownMenu.Item
                 key={`dropdown_item_${index}_${label}`}
                 className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[5px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1 hover:bg-[#ef79ac33] cursor-pointer"
-                onClick={()=> clickHandler}
+                onClick={()=> clickHandler()}
               >
                 <div 
                   className={

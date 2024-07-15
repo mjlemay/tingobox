@@ -1,5 +1,7 @@
-import React from 'react';
-import DropdownMenuButton from './dropdownMenuButton'
+import React, { useState } from 'react';
+import DropdownMenuButton from './dropdownMenuButton';
+import Modal from './modal';
+import NewProjectView from './newProjectView';
 import { defaultProject, basicProjectType } from '../constants/defaults';
 import {
   GearIcon,
@@ -12,23 +14,34 @@ interface WorkspaceScreenProps {
   selectedProject?: basicProjectType;
   screenActionHandler?: Function;
 }
-
-const ProjectMenuItems = [
-  {
-    label: 'Edit Project',
-    icon: <Pencil1Icon />,
-    clickHandler: () => {},
-  },
-  {
-    label: 'Configure Settings',
-    icon: <GearIcon />,
-    clickHandler: () => {},
-  }
-]
   
 export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element {
   const { selectedProject = defaultProject } = props;
   const { name } = selectedProject;
+  const [ selectedModal, setSelectedModal ] = useState('');
+  const [ openModal, setOpenModal ] = useState(false);
+
+  const activateModal = (modal:string) => {
+    setSelectedModal(modal);
+    setOpenModal(true);
+  }
+  const closeModal = () => {
+    setOpenModal(false);
+    setSelectedModal('');
+  }
+
+  const ProjectMenuItems = [
+    {
+      label: 'Edit Project',
+      icon: <Pencil1Icon />,
+      clickHandler: () => activateModal('editProject'),
+    },
+    {
+      label: 'Configure Settings',
+      icon: <GearIcon />,
+      clickHandler: () => activateModal('configProject'),
+    }
+  ]
 
   return (
       <div
@@ -47,7 +60,16 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
       </div>
       <div>
         <div data-id="sideBar"></div>
-        <div data-id="deskTop"></div>
+        <div data-id="desktop">
+
+        </div>
+      </div>
+      <div data-id="hidden-containers">
+        <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
+          {selectedModal === 'editProject' && (
+            <NewProjectView actionHandler={()=>{}} />
+          )}
+        </Modal>
       </div>
     </div>
   )
