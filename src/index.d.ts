@@ -1,2 +1,1 @@
-declare const getProjects: typeof import('./services/projectService').getProjects;
-declare const addProject: typeof import('./services/projectService').addProject;
+declare const projectData: typeof import('./services/projectService').projectData;

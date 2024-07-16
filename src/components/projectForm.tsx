@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import Button from './button';
 import Input from './input';
 import ThumbsUpIcon from '../svg/thumbsUpIcon';
+import { basicProjectType } from '../constants/defaults';
 
 interface NewProjectProps {
-    actionHandler: Function;
+    exitHandler: Function;
+    submitHandler: Function;
+    defaultPayload?: basicProjectType
 }
   
-  export default function NewProjectView(props:NewProjectProps):JSX.Element {
-    const { actionHandler } = props;
-    const defaultForm = {
-        name: '',
-        description: '',
-    };
-    const [ form, setForm ] = useState(defaultForm);
+  export default function projectForm(props:NewProjectProps):JSX.Element {
+    const { defaultPayload, exitHandler, submitHandler } = props;
+    const defaultFormState = defaultPayload || {name:'', description:''};
+    const [ form, setForm ] = useState(defaultFormState);
 
     const handleFormChange = (Event:React.ChangeEvent<HTMLInputElement>) => {
         const eventTarget = Event?.target;
@@ -25,20 +25,19 @@ interface NewProjectProps {
     }
 
     const createNewProject = () => {
-        addProject(form);
-        actionHandler('view','home');
+        submitHandler(form);
+        exitHandler('view','home');
     }
   
     return (
       <>
-        <h1>New Project</h1>
         <div className='mb-4'>
-            <Input label='Name' name='name' value={form.name} changeHandler={handleFormChange} />
+            <Input label='Project Name' name='name' value={form.name} changeHandler={handleFormChange} />
             <Input label='Description' name='description' value={form.description} changeHandler={handleFormChange} />
         </div>
         <Button suffix={<ThumbsUpIcon />} handleAction={() => createNewProject()}>LET'S GOOO!</Button>
         <div 
-            onClick={() => actionHandler && actionHandler('view','home')}
+            onClick={() => exitHandler && exitHandler('view','home')}
             className='hover:bg-[#ef79ac33] cursor-pointer my-2'
         >
                 eh, nevermind

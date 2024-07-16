@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import CappyTingo from '../svg/capytingo.tsx';
 import Tingobox from '../svg/tingobox.tsx';
 import HomeView from './homeView.tsx';
-import NewProjectView from './newProjectView.tsx';
+import ProjectForm from './projectForm.tsx';
+import { basicProjectType } from '../constants/defaults.ts';
 
 interface SplashScreenProps {
   children?: React.ReactNode;
@@ -13,13 +14,16 @@ interface SplashScreenProps {
     const { children, screenActionHandler } = props;
     const [ view, setView ] = useState('home');
 
-    const handleAction = (action:string, value:string, payload:object) => {
+    const handleView = (action:string, value:string, payload:object) => {
       if (action == 'view') {
         setView(value);
       }
       if (action == 'screen') {
         screenActionHandler(value, payload);
       }
+    }
+    const handleSubmit = (payload:basicProjectType) => {
+      projectData.addProject(payload);
     }
   
     return (
@@ -35,8 +39,8 @@ interface SplashScreenProps {
           </div>
           <div className='grow'>
             <div className="flex flex-col h-[600px] w-[300px] justify-center">
-              {view == 'home' && <HomeView actionHandler={handleAction} />}
-              {view == 'newProject' && <NewProjectView actionHandler={handleAction} />}
+              {view == 'home' && <HomeView actionHandler={handleView} />}
+              {view == 'newProject' && <ProjectForm submitHandler={handleSubmit} exitHandler={handleView} />}
               {children}
             </div>
           </div>

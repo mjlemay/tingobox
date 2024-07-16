@@ -1,22 +1,7 @@
 import { db } from './sqlLiteService';
+import { basicProjectType } from '../constants/defaults';
 
-type basicProject = {
-    name:string;
-    description: string;
-}
-
-const getProjects = () => {
-    try {
-        const query = `SELECT * FROM projects`;
-        const readQuery = db.prepare(query);
-        const rowList = readQuery.all();
-        return rowList;
-    } catch (err) {
-        console.error(err);
-        return []
-    }
-}
-const addProject = (project:basicProject) => {
+const addProject = (project:basicProjectType) => {
     const { name, description } = project;
     try {
         const insertQuery = db.prepare(
@@ -37,5 +22,34 @@ const addProject = (project:basicProject) => {
     }
 }
 
-export { getProjects, addProject }
+
+const getProjects = () => {
+    try {
+        const query = `SELECT * FROM projects`;
+        const readQuery = db.prepare(query);
+        const rowList = readQuery.all();
+        return rowList;
+    } catch (err) {
+        console.error(err);
+        return []
+    }
+}
+
+const updateProject = (project:basicProjectType) => {
+    const { description, projectId, name } = project;
+    try {
+        console.log(description, projectId, name);
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
+const projectData = { 
+    addProject,
+    getProjects,
+    updateProject
+ }
+
+export { projectData }
 

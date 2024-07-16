@@ -20,7 +20,7 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
   const [ hasFetched, setFetched ] = useState(false);
 
   const fetchData = useCallback(() => {
-    const data = getProjects();
+    const data = projectData.getProjects();
     setProjects(data)
     setFetched(true);
   }, []);

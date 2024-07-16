@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './app.css';
-import SplashScreen from './components/spashScreen.tsx';
+import SplashScreen from './components/splashScreen.tsx';
 import WorkSpaceScreen from './components/workspaceScreen.tsx';
 import { defaultProject, basicProjectType } from './constants/defaults.ts';
 

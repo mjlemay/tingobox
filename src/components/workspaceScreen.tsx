@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DropdownMenuButton from './dropdownMenuButton';
 import Modal from './modal';
-import NewProjectView from './newProjectView';
+import NewProjectView from './projectForm';
 import { defaultProject, basicProjectType } from '../constants/defaults';
 import {
   GearIcon,
@@ -28,6 +28,10 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
   const closeModal = () => {
     setOpenModal(false);
     setSelectedModal('');
+  }
+
+  const addProject = (payload:basicProjectType) => {
+    projectData.addProject(payload)
   }
 
   const ProjectMenuItems = [
@@ -67,7 +71,11 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
       <div data-id="hidden-containers">
         <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
           {selectedModal === 'editProject' && (
-            <NewProjectView actionHandler={()=>{}} />
+            <NewProjectView 
+              submitHandler={(payload:basicProjectType)=> projectData.updateProject(payload)} 
+              exitHandler={()=> closeModal()}
+              defaultPayload={selectedProject}
+              />
           )}
         </Modal>
       </div>

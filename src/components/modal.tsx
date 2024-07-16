@@ -32,7 +32,6 @@ export default function Modal(props:ModalProps):JSX.Element {
                         {description}
                     </Dialog.Description>)}
                     { children }
-                    <a onClick={() => closeHandler()}>CLOSE</a>
                 </Dialog.Content>
             </Dialog.Portal>
       </Dialog.Root>

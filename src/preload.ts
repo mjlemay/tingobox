@@ -1,10 +1,9 @@
 const { contextBridge } = require('electron');
-import { getProjects, addProject } from './services/projectService';
+import { projectData } from './services/projectService';
 
 export {};
 const versionsCheckArr = ['chrome', 'node', 'electron'];
-contextBridge.exposeInMainWorld('getProjects', getProjects);
-contextBridge.exposeInMainWorld('addProject', addProject);
+contextBridge.exposeInMainWorld('projectData', projectData);
 
 window.addEventListener('DOMContentLoaded', () => {
 
