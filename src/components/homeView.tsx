@@ -12,6 +12,7 @@ interface HomeViewProps {
 type project = {
   name: string;
 }
+const LIMIT = 5;
   
 export default function HomeView(props:HomeViewProps):JSX.Element {
   const { actionHandler } = props;
@@ -20,7 +21,7 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
   const [ hasFetched, setFetched ] = useState(false);
 
   const fetchData = useCallback(() => {
-    const data = projectData.getProjects();
+    const data = projectData.getProjects(LIMIT);
     setProjects(data)
     setFetched(true);
   }, []);

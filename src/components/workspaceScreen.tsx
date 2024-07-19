@@ -30,9 +30,9 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     setSelectedModal('');
   }
 
-  const addProject = (payload:basicProjectType) => {
-    projectData.addProject(payload)
-  }
+  // const addProject = (payload:basicProjectType) => {
+  //   projectData.addProject(payload)
+  // }
 
   const ProjectMenuItems = [
     {

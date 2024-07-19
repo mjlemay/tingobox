@@ -23,9 +23,10 @@ const addProject = (project:basicProjectType) => {
 }
 
 
-const getProjects = () => {
+const getProjects = (limit:number) => {
+    let limitVal = limit ? ` LIMIT ${limit}` : '';
     try {
-        const query = `SELECT * FROM projects`;
+        const query = `SELECT * FROM projects${limitVal}`;
         const readQuery = db.prepare(query);
         const rowList = readQuery.all();
         return rowList;
