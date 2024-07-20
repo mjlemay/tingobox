@@ -17,7 +17,7 @@ interface WorkspaceScreenProps {
   
 export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element {
   const { selectedProject = defaultProject } = props;
-  const { name } = selectedProject;
+  const { name, projectId } = selectedProject;
   const [ selectedModal, setSelectedModal ] = useState('');
   const [ openModal, setOpenModal ] = useState(false);
 
@@ -56,7 +56,7 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
       >
         <div data-id="left-head-bar" className="flex-initial"></div>
         <div data-id="main-head-bar">
-          <h1 className="text-xl">{name}</h1>
+          <h1 className="text-xl">{projectId} - {name}</h1>
         </div>
         <div data-id="right-head-bar" className="flex-initial">
           <DropdownMenuButton menuItems={ProjectMenuItems} />

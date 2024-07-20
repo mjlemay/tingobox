@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import Button from './button';
 import Input from './input';
 import ThumbsUpIcon from '../svg/thumbsUpIcon';
-import { basicProjectType } from '../constants/defaults';
+import { basicProjectType, defaultProject } from '../constants/defaults';
 
 interface NewProjectProps {
     exitHandler: Function;
     submitHandler: Function;
-    defaultPayload?: basicProjectType
+    defaultPayload?: basicProjectType;
 }
   
   export default function projectForm(props:NewProjectProps):JSX.Element {
     const { defaultPayload, exitHandler, submitHandler } = props;
-    const defaultFormState = defaultPayload || {name:'', description:''};
+    const defaultFormState = defaultPayload || defaultProject;
     const [ form, setForm ] = useState(defaultFormState);
 
     const handleFormChange = (Event:React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +32,7 @@ interface NewProjectProps {
     return (
       <>
         <div className='mb-4'>
+            <Input name='projectId' value={form.projectId} hidden changeHandler={()=>{}} /> 
             <Input label='Project Name' name='name' value={form.name} changeHandler={handleFormChange} />
             <Input label='Description' name='description' value={form.description} changeHandler={handleFormChange} />
         </div>

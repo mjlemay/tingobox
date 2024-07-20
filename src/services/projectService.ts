@@ -39,7 +39,19 @@ const getProjects = (limit:number) => {
 const updateProject = (project:basicProjectType) => {
     const { description, projectId, name } = project;
     try {
-        console.log(description, projectId, name);
+        console.log('projectId', projectId);
+        const updateQuery = db.prepare(
+            `UPDATE projects SET name = '${name}', description = '${description}' WHERE projectId = ${projectId}`
+        );
+        const transaction = db.transaction(() => {
+            const info = updateQuery.run();
+            console.log(JSON.stringify(info));
+            console.log(
+                `Updated ${info.changes} rows with last ID 
+                ${info.lastInsertRowid} into project`
+            );
+        });
+        transaction();
     } catch (err) {
         console.error(err);
         throw err;

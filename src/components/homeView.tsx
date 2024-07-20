@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-
+import { basicProjectType } from '../constants/defaults';
 import Block from '../components/block.tsx';
 import Button from '../components/button.tsx';
 import MenuItem from '../components/menuItem.tsx';
@@ -9,14 +9,11 @@ interface HomeViewProps {
     actionHandler: Function;
 }
 
-type project = {
-  name: string;
-}
 const LIMIT = 5;
   
 export default function HomeView(props:HomeViewProps):JSX.Element {
   const { actionHandler } = props;
-  const defaultProjects:project[] = [];
+  const defaultProjects:basicProjectType[] = [];
   const [ projects, setProjects ] = useState(defaultProjects);
   const [ hasFetched, setFetched ] = useState(false);
 

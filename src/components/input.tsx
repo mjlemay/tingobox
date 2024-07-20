@@ -4,11 +4,12 @@ interface InputProps {
     changeHandler: Function;
     label?: string;
     name: string;
+    hidden?: boolean;
     value?: string | number | readonly string[];
 }
   
   export default function Input(props:InputProps):JSX.Element {
-    const { changeHandler, label, name, value = '' } = props;
+    const { changeHandler, hidden = false, label, name, value = '' } = props;
   
     return (
       <div className='my-2'>
@@ -17,6 +18,7 @@ interface InputProps {
           className='peer outline-none bg-gray-50 border-none text-gray-900 rounded-lg block w-full p-2.5 text-xl outline outline-0 focus:outline-0 transition-all px-3 py-2.5 focus:ring-2 focus:ring-blue-500'
           value={value}
           name={name}
+          type={hidden ? 'hidden' : 'text' }
           onChange={(Event) => changeHandler(Event)}
         />
       </div>
