@@ -16,7 +16,7 @@ interface WorkspaceScreenProps {
 }
   
 export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element {
-  const { selectedProject = defaultProject } = props;
+  const { selectedProject = defaultProject, screenActionHandler = ()=>{}} = props;
   const { name, projectId } = selectedProject;
   const [ selectedModal, setSelectedModal ] = useState('');
   const [ openModal, setOpenModal ] = useState(false);
@@ -30,9 +30,11 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     setSelectedModal('');
   }
 
-  // const addProject = (payload:basicProjectType) => {
-  //   projectData.addProject(payload)
-  // }
+  const submitUpdateProject = async (payload:basicProjectType) => {
+    await projectData.updateProject(payload).then((data:any) => {
+      screenActionHandler('workspace', data[0]);
+    });
+  }
 
   const ProjectMenuItems = [
     {
@@ -47,6 +49,7 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     }
   ]
 
+
   return (
       <div
       className="h-screen w-screen"
@@ -56,7 +59,7 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
       >
         <div data-id="left-head-bar" className="flex-initial"></div>
         <div data-id="main-head-bar">
-          <h1 className="text-xl">{projectId} - {name}</h1>
+          <h1 className="text-xl" data-id={projectId}>{name}</h1>
         </div>
         <div data-id="right-head-bar" className="flex-initial">
           <DropdownMenuButton menuItems={ProjectMenuItems} />
@@ -72,7 +75,7 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
         <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
           {selectedModal === 'editProject' && (
             <ProjectForm 
-              submitHandler={(payload:basicProjectType)=> projectData.updateProject(payload)} 
+              submitHandler={(payload:basicProjectType)=> submitUpdateProject(payload)} 
               exitHandler={()=> closeModal()}
               defaultPayload={selectedProject}
               />

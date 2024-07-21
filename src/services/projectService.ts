@@ -1,26 +1,32 @@
 import { db } from './sqlLiteService';
+import { eq } from 'drizzle-orm';
 import { projects} from '../constants/dbSchema';
 import { basicProjectType, createProjectType } from '../constants/defaults';
 
 
 const addProject = async (project:createProjectType) => {
-    const { name, description, is_template } = project;
+    const { name, description } = project;
     const values ={
         name,
         description,
-        is_template,
     };
-    console.log('values', values);
     return await db.insert(projects).values(values);
+}
+
+const getProject = async (projectId:number) => {
+    return await db.select().from(projects).where(eq(projects.projectId, projectId));
 }
 
 const getProjects = async (limit:number) => {
     return await db.select().from(projects).limit(limit);
 }
 
-const updateProject = (project:basicProjectType) => {
-    const { description, projectId, name } = project;
-    console.log(description, projectId, name);
+const updateProject = async (project:basicProjectType) => {
+    const { projectId } = project;
+    return await db.update(projects)
+        .set(project)
+        .where(eq(projects.projectId, projectId))
+        .returning();
 }
 
 const deleteProject = (project:basicProjectType) => {
@@ -31,6 +37,7 @@ const deleteProject = (project:basicProjectType) => {
 const projectData = { 
     addProject,
     deleteProject,
+    getProject,
     getProjects,
     updateProject
  }
