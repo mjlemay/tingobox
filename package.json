@@ -6,6 +6,8 @@
   "scripts": {
     "test": "test",
     "lint": "echo \"No linting configured\"",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
     "start": "tsc && electron-forge start",
     "package": "tsc && electron-forge package",
     "make": "tsc && electron-forge make"

@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import Button from './button';
 import Input from './input';
 import ThumbsUpIcon from '../svg/thumbsUpIcon';
-import { basicProjectType, defaultProject } from '../constants/defaults';
+import { basicProjectType, createProjectType, defaultProject } from '../constants/defaults';
 
 interface NewProjectProps {
     exitHandler: Function;
     submitHandler: Function;
-    defaultPayload?: basicProjectType;
+    defaultPayload?: basicProjectType | createProjectType;
 }
   
-  export default function projectForm(props:NewProjectProps):JSX.Element {
+  export default function ProjectForm(props:NewProjectProps):JSX.Element {
     const { defaultPayload, exitHandler, submitHandler } = props;
     const defaultFormState = defaultPayload || defaultProject;
     const [ form, setForm ] = useState(defaultFormState);
@@ -32,9 +32,10 @@ interface NewProjectProps {
     return (
       <>
         <div className='mb-4'>
-            <Input name='projectId' value={form.projectId} hidden changeHandler={()=>{}} /> 
-            <Input label='Project Name' name='name' value={form.name} changeHandler={handleFormChange} />
-            <Input label='Description' name='description' value={form.description} changeHandler={handleFormChange} />
+            <Input name='projectId' value={form.projectId || -1} hidden changeHandler={()=>{}} />
+            <Input name='is_template' value={form.is_template || 0} hidden changeHandler={()=>{}} /> 
+            <Input label='Project Name' name='name' value={form.name || ''} changeHandler={handleFormChange} />
+            <Input label='Description' name='description' value={form.description || ''} changeHandler={handleFormChange} />
         </div>
         <Button suffix={<ThumbsUpIcon />} handleAction={() => createNewProject()}>LET'S GOOO!</Button>
         <div 

@@ -14,7 +14,7 @@ export default defineConfig((env) => {
   const config = {
     build: {
       rollupOptions: {
-        external,
+        external: ['drizzleOrm'],
         // Preload scripts may contain Web assets, so use the `build.rollupOptions.input` instead `build.lib.entry`.
         input: forgeConfigSelf.entry,
         output: {
@@ -27,7 +27,9 @@ export default defineConfig((env) => {
         },
       },
     },
-    plugins: [pluginHotRestart('reload')],
+    plugins: [
+      pluginHotRestart('reload')
+    ],
     resolve: {
       preserveSymlinks: true,
 

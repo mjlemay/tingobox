@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { basicProjectType } from '../constants/defaults';
 import Block from '../components/block.tsx';
 import Button from '../components/button.tsx';
@@ -17,11 +17,12 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
   const [ projects, setProjects ] = useState(defaultProjects);
   const [ hasFetched, setFetched ] = useState(false);
 
-  const fetchData = useCallback(() => {
-    const data = projectData.getProjects(LIMIT);
-    setProjects(data)
-    setFetched(true);
-  }, []);
+  const fetchData = async () => {
+    await projectData.getProjects(LIMIT).then((data:basicProjectType[]) => {
+      setProjects(data);
+      setFetched(true);
+    });
+  };
 
   useEffect(()=> {
     if (!hasFetched) {

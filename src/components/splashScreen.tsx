@@ -3,7 +3,7 @@ import CappyTingo from '../svg/capytingo.tsx';
 import Tingobox from '../svg/tingobox.tsx';
 import HomeView from './homeView.tsx';
 import ProjectForm from './projectForm.tsx';
-import { basicProjectType } from '../constants/defaults.ts';
+import { createProjectType } from '../constants/defaults.ts';
 
 interface SplashScreenProps {
   children?: React.ReactNode;
@@ -22,8 +22,9 @@ interface SplashScreenProps {
         screenActionHandler(value, payload);
       }
     }
-    const handleSubmit = (payload:basicProjectType) => {
-      projectData.addProject(payload);
+
+    const handleSubmit = async (payload:createProjectType) => {
+      await projectData.addProject(payload);
     }
   
     return (

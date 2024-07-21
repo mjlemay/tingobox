@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DropdownMenuButton from './dropdownMenuButton';
 import Modal from './modal';
-import NewProjectView from './projectForm';
+import ProjectForm from './projectForm';
 import { defaultProject, basicProjectType } from '../constants/defaults';
 import {
   GearIcon,
@@ -11,7 +11,7 @@ import {
 
 interface WorkspaceScreenProps {
   children?: React.ReactNode;
-  selectedProject?: basicProjectType;
+  selectedProject: basicProjectType;
   screenActionHandler?: Function;
 }
   
@@ -71,7 +71,7 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
       <div data-id="hidden-containers">
         <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
           {selectedModal === 'editProject' && (
-            <NewProjectView 
+            <ProjectForm 
               submitHandler={(payload:basicProjectType)=> projectData.updateProject(payload)} 
               exitHandler={()=> closeModal()}
               defaultPayload={selectedProject}
