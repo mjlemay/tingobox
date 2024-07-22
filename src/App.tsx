@@ -11,10 +11,8 @@ function App() {
   const [ project, setProject ] = useState(defaultProject as basicProjectType);
 
   const handleAction = (action:string, payload:basicProjectType) => {
-    if (action) {
-      setScreen(action);
-      setProject(payload);
-    }
+    action && setScreen(action);
+    payload && setProject(payload);
   }
 
   return (

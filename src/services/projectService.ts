@@ -29,9 +29,11 @@ const updateProject = async (project:basicProjectType) => {
         .returning();
 }
 
-const deleteProject = (project:basicProjectType) => {
+const deleteProject = async (project:basicProjectType) => {
     const { projectId } = project;
-    console.log('delete', projectId);
+    return await db.delete(projects)
+        .where(eq(projects.projectId, projectId))
+        .returning();
 }
 
 const projectData = { 
