@@ -27,9 +27,10 @@ interface SplashScreenProps {
       await projectData.addProject(payload);
     }
   
+    //TODO: WRITE CARD ELEMENT WRAPPER
     return (
         <div
-        className='w-[800px] h-[600px] merdee'
+        className='w-[800px] h-[600px] bg-neutral-800'
       >
         <div className='flex flex-row items-center'>
           <div className='grow'>

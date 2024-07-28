@@ -5,7 +5,13 @@ module.exports = {
       './src/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
-      extend: {},
+      extend: {
+        colors: {
+          neutral: {
+            925: '#121212',
+          },
+        },
+      },
     },
     corePlugins: {
       preflight: false,

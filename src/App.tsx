@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './app.css';
 import SplashScreen from './components/splashScreen.tsx';
 import WorkSpaceScreen from './components/workspaceScreen.tsx';
 import { defaultProject, basicProjectType } from './constants/defaults.ts';
-
+import SideMenuBar from './components/sideMenuBar.tsx';
 
 function App() {
 
@@ -16,12 +16,16 @@ function App() {
   }
 
   return (
-    <div
-      className='h-screen bg-indigo-200 flex flex-row min-h-screen justify-center items-center'
-    >
-      {screen == 'splash' && <SplashScreen screenActionHandler={handleAction} />}
-      {screen == 'workspace' && <WorkSpaceScreen screenActionHandler={handleAction} selectedProject={project} />}
-    </div>
+      <div
+        className={`h-screen bg-neutral-900 flex flex-column min-h-screen w-screen min-w-screen justify-center items-center`}
+        data-theme={"darkTheme"}
+      >
+        <SideMenuBar />
+        <div className={`h-screen flex flex-row min-h-screen w-screen justify-center items-center`}>
+          {screen == 'splash' && <SplashScreen screenActionHandler={handleAction} />}
+          {screen == 'workspace' && <WorkSpaceScreen screenActionHandler={handleAction} selectedProject={project} />}
+        </div>
+      </div>
   )
 }
 
