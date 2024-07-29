@@ -1,33 +1,36 @@
 import React from 'react';
-import ProjectIcon from '../svg/projectIcon';
+import { FileIcon } from '@radix-ui/react-icons';
 
 interface MenuItemProps {
     children?: React.ReactNode;
+    disabled?: boolean;
+    handleAction?: Function;
     iconBGColor?: string;
     label: string;
     prefix?: React.ReactNode;
+    selected?: boolean;
     suffix?: React.ReactNode;
-    handleAction?: Function; 
   }
   
   export default function MenuItem(props:MenuItemProps):JSX.Element {
-    const { children, handleAction, iconBGColor, label, prefix, suffix } = props;
+    const { children, disabled, handleAction, label, prefix, selected = false, suffix } = props;
   
     return (
       <div
-        className='flex flex-row gap-2 hover:bg-[#ef79ac33] rounded-lg cursor-pointer'
-        onClick={() => handleAction && handleAction()}
+      data-selected={selected}
+      data-disabled={disabled}
+        className={`flex select-none flex-row gap-2 data-[selected=true]:bg-slate-500 ${!disabled && 'hover:bg-slate-700 cursor-pointer'} max-h-[24px] min-h-[24px] pl-2 data-[disabled=true]:text-neutral-500`}
+        onClick={() => handleAction && !disabled && handleAction()}
       >
         <div 
-            className={
-                `flex grow-0 items-center justify-center min-w-10 max-w-10 w-10 min-h-10 max-h-10 h-10 rounded-lg border-2 border-solid border-gray-800 ${iconBGColor ?  iconBGColor : 'bg-stone-200'}`
-            }>
-            {(prefix ? prefix : <ProjectIcon />)}</div>
-        <div className='flex w-80 h-10 truncate ...'>
-            <span className='inline-block text-xl leading-loose truncate ...'>{label}</span>
+            className="min-h-[24px] flex items-center text-neutral-500 justify-center">
+            {(prefix ? prefix : <FileIcon />)}
+        </div>
+        <div className='flex max-h-[24px] min-h-[24px] items-center grow truncate ...'>
+            <span className='inline-block text-sm leading-loose truncate ...'>{label}</span>
         </div>
         {(suffix && <div 
-            className='flex grow-0 min-w-10 max-w-10 w-10 min-h-10 max-h-10 h-10 rounded-lg'>
+            className='flex flex-row gap-2 hover:bg-slate-700 cursor-pointer max-h-[24px] min-h-[24px] pl-2'>
                 {suffix}
             </div>
         )}

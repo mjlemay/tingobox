@@ -20,7 +20,7 @@ interface BlockProps {
               {icon}
             </div>
           )}
-          {title && <div className='flex grow font-semibold items-center min-h-[40px]'>{title}</div>}
+          {title && <div className='flex grow font-semibold items-center min-h-[40px] truncate ...'>{title}</div>}
           {menu && (
             <div className='flex grow-0 items-center justify-center min-w-[40px] min-h-[40px] rounded-lg border-1'>
               {menu}

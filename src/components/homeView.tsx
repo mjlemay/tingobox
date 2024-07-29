@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { basicProjectType } from '../constants/defaults';
 import Block from '../components/block.tsx';
 import MenuItem from '../components/menuItem.tsx';
-import { BackpackIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
+import { BackpackIcon, MixIcon } from '@radix-ui/react-icons'
 
 interface HomeViewProps {
     actionHandler: Function;
@@ -30,20 +30,30 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
   }, [hasFetched]);
 
   return (
-    <>
-        <Block title="Recent Projects" icon={<BackpackIcon width={20} height={20} />} menu={<DotsVerticalIcon width={20} height={20} />}>
-              <div className="flex flex-col gap-2">
-                {projects && projects.map(project => {
+    <div className="flex flex-col h-[600px]">
+      <div className="flex-1">
+        <Block title="Recent Projects" icon={<BackpackIcon width={20} height={20} />}>
+              <div className="flex flex-col">
+                <div>
+                {projects && projects.map((project, index) => {
                   return (
                     <MenuItem 
                       key={`$_item_${project.name}`}
                       label={project.name} 
+                      prefix={<BackpackIcon />}
                       handleAction={() => actionHandler('screen', 'workspace', project)}
                     />
                   )
                 })}
+                </div>
               </div>
-            </Block>
-    </>
+        </Block>
+        </div>
+        <div className="flex-1">
+        <Block title="Recent Components" icon={<MixIcon width={20} height={20} />}>
+            <MenuItem label="TBD" prefix={<MixIcon />} />
+        </Block>
+        </div>
+    </div>
   )
 }
