@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { basicProjectType } from '../constants/defaults';
 import Block from '../components/block.tsx';
-import Button from '../components/button.tsx';
 import MenuItem from '../components/menuItem.tsx';
-import ProjectIcon from '../svg/projectIcon';
+import { BackpackIcon, DotsVerticalIcon } from '@radix-ui/react-icons'
 
 interface HomeViewProps {
     actionHandler: Function;
@@ -32,7 +31,7 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
 
   return (
     <>
-        <Block title="Recent Projects">
+        <Block title="Recent Projects" icon={<BackpackIcon width={20} height={20} />} menu={<DotsVerticalIcon width={20} height={20} />}>
               <div className="flex flex-col gap-2">
                 {projects && projects.map(project => {
                   return (
@@ -44,9 +43,6 @@ export default function HomeView(props:HomeViewProps):JSX.Element {
                   )
                 })}
               </div>
-            </Block>
-            <Block title="Quick Actions">
-              <Button suffix={<ProjectIcon />} handleAction={() => actionHandler('view', 'newProject')}>New Project</Button>
             </Block>
     </>
   )

@@ -17,7 +17,7 @@ function App() {
 
   return (
       <div
-        className={`h-screen bg-neutral-900 flex flex-column min-h-screen w-screen min-w-screen justify-center items-center`}
+        className={`h-screen bg-neutral-900 text-white flex flex-column min-h-screen w-screen min-w-screen justify-center items-center`}
         data-theme={"darkTheme"}
       >
         <SideMenuBar />

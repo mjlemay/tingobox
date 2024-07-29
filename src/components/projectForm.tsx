@@ -30,7 +30,7 @@ interface NewProjectProps {
     }
   
     return (
-      <>
+      <div className='p-2'>
         <div className='mb-4'>
             <Input name='projectId' value={form.projectId || -1} hidden changeHandler={()=>{}} />
             <Input name='is_template' value={form.is_template || 0} hidden changeHandler={()=>{}} /> 
@@ -44,6 +44,6 @@ interface NewProjectProps {
         >
                 eh, nevermind
         </div>
-      </>
+      </div>
     )
   }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import CappyTingo from '../svg/capytingo.tsx';
-import Tingobox from '../svg/tingobox.tsx';
 import HomeView from './homeView.tsx';
 import ProjectForm from './projectForm.tsx';
 import { createProjectType } from '../constants/defaults.ts';
+import Card from './card.tsx';
+import ImageButton from './imageButton.tsx';
 
 interface SplashScreenProps {
   children?: React.ReactNode;
@@ -29,24 +29,27 @@ interface SplashScreenProps {
   
     //TODO: WRITE CARD ELEMENT WRAPPER
     return (
-        <div
-        className='w-[800px] h-[600px] bg-neutral-800'
-      >
-        <div className='flex flex-row items-center'>
-          <div className='grow'>
-            <div className='flex flex-col h-[600px] w-[300px] items-center justify-center'>
-              <Tingobox />
-              <CappyTingo />
+      <Card>
+          <div
+          className='w-[800px] h-[600px]'
+        >
+          <div className='flex flex-row items-center'>
+            <div className='grow w-full'>
+              <div className='flex flex-col h-[600px]'>
+                <ImageButton width={350} height={200} label="Create A New Project" handleAction={() => setView('newProject')} />
+                <ImageButton width={350} height={200} label="Start From A Template" handleAction={() => console.log('newTemplate')} />
+                <ImageButton width={350} height={200} label="Select an Event" handleAction={() => console.log('viewEvents')} />
+              </div>
             </div>
-          </div>
-          <div className='grow'>
-            <div className="flex flex-col h-[600px] w-[300px] justify-center">
-              {view == 'home' && <HomeView actionHandler={handleView} />}
-              {view == 'newProject' && <ProjectForm submitHandler={handleSubmit} exitHandler={handleView} />}
-              {children}
+            <div className='grow w-full'>
+              <div className="flex flex-col h-[600px] justify-top">
+                {view == 'home' && <HomeView actionHandler={handleView} />}
+                {view == 'newProject' && <ProjectForm submitHandler={handleSubmit} exitHandler={handleView} />}
+                {children}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     )
   }
