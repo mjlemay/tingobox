@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import DropdownMenuButton from './dropdownMenuButton';
 import Modal from './modal';
 import ProjectForm from './projectForm';
 import ConfirmationForm from './confirmationForm';
 import { textCopy } from '../constants/language';
 import { defaultProject, basicProjectType } from '../constants/defaults';
-import {
-  GearIcon,
-  Pencil1Icon,
-} from '@radix-ui/react-icons';
+// import {
+//   GearIcon,
+//   Pencil1Icon,
+// } from '@radix-ui/react-icons';
 
 
 interface WorkspaceScreenProps {
@@ -24,10 +23,10 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
   const [ openModal, setOpenModal ] = useState(false);
   const { confirmDelete } = textCopy;
 
-  const activateModal = (modal:string) => {
-    setSelectedModal(modal);
-    setOpenModal(true);
-  }
+  // const activateModal = (modal:string) => {
+  //   setSelectedModal(modal);
+  //   setOpenModal(true);
+  // }
   const closeModal = () => {
     setOpenModal(false);
     setSelectedModal('');
@@ -45,41 +44,35 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     });
   }
 
-  const ProjectMenuItems = [
-    {
-      label: 'Edit Project',
-      icon: <Pencil1Icon />,
-      clickHandler: () => activateModal('editProject'),
-    },
-    {
-      label: 'Configure Settings',
-      icon: <GearIcon />,
-      clickHandler: () => activateModal('configProject'),
-    }
-  ]
+  // const ProjectMenuItems = [
+  //   {
+  //     label: 'Edit Project',
+  //     icon: <Pencil1Icon />,
+  //     clickHandler: () => activateModal('editProject'),
+  //   },
+  //   {
+  //     label: 'Configure Settings',
+  //     icon: <GearIcon />,
+  //     clickHandler: () => activateModal('configProject'),
+  //   }
+  // ]
 
 
   return (
-      <div
-      className="h-screen w-screen"
-    >
-
-      <div>
-        <div data-id="sideBar"></div>
-        <div data-id="desktop">
-          <div data-id="header" 
-          className="h-[40px] w-screen bg-indigo-400 border-1 border-solid border-indigo-500 flex justify-between items-center"
+    <>
+      <div className="flex flex-col min-w-full  min-h-full justify-top">
+        <div data-id="header" 
+          className="h-[40px] flex-none border-b border-neutral-800 bg-neutral-950"
         >
-          <div data-id="left-head-bar" className="flex-initial"></div>
-          <div data-id="main-head-bar">
-            <h1 className="text-xl" data-id={projectId}>{name}</h1>
-          </div>
-          <div data-id="right-head-bar" className="flex-initial">
-            <DropdownMenuButton menuItems={ProjectMenuItems} />
+          <div className="text-xl h-[40px] w-fit max-w-[200px] py-3 px-4 inline-flex items-center gap-x-2 bg-neutral-900  text-center border data-[selected=true]:border-b-0 border-neutral-800 text-white rounded-tr-xl data-[selected=true]:opacity-100 opacity-50 cursor-pointer leading-loose truncate ..." data-id={projectId} data-selected>
+          <span className='inline-block text-m font-medium leading-loose truncate ...'> {name}</span>
           </div>
         </div>
+        <div className="min-w-full grow">
         </div>
       </div>
+
+
       <div data-id="hidden-containers">
         <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
           {selectedModal === 'editProject' && (
@@ -99,6 +92,6 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
           )}
         </Modal>
       </div>
-    </div>
+    </>
   )
 }

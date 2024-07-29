@@ -20,7 +20,7 @@ function App() {
         className={`h-screen bg-neutral-900 text-white flex flex-column min-h-screen w-screen min-w-screen justify-center items-center`}
         data-theme={"darkTheme"}
       >
-        <SideMenuBar />
+        <SideMenuBar screenActionHandler={handleAction}  />
         <div className={`h-screen flex flex-row min-h-screen w-screen justify-center items-center`}>
           {screen == 'splash' && <SplashScreen screenActionHandler={handleAction} />}
           {screen == 'workspace' && <WorkSpaceScreen screenActionHandler={handleAction} selectedProject={project} />}
