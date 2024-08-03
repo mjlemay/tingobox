@@ -4,10 +4,11 @@ import ProjectForm from './projectForm';
 import ConfirmationForm from './confirmationForm';
 import { textCopy } from '../constants/language';
 import { defaultProject, basicProjectType } from '../constants/defaults';
-// import {
-//   GearIcon,
-//   Pencil1Icon,
-// } from '@radix-ui/react-icons';
+import MoreMenuButton from './moreMenuButton';
+import {
+  GearIcon,
+  Pencil1Icon,
+} from '@radix-ui/react-icons';
 
 
 interface WorkspaceScreenProps {
@@ -23,10 +24,10 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
   const [ openModal, setOpenModal ] = useState(false);
   const { confirmDelete } = textCopy;
 
-  // const activateModal = (modal:string) => {
-  //   setSelectedModal(modal);
-  //   setOpenModal(true);
-  // }
+  const activateModal = (modal:string) => {
+    setSelectedModal(modal);
+    setOpenModal(true);
+  }
   const closeModal = () => {
     setOpenModal(false);
     setSelectedModal('');
@@ -44,18 +45,18 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     });
   }
 
-  // const ProjectMenuItems = [
-  //   {
-  //     label: 'Edit Project',
-  //     icon: <Pencil1Icon />,
-  //     clickHandler: () => activateModal('editProject'),
-  //   },
-  //   {
-  //     label: 'Configure Settings',
-  //     icon: <GearIcon />,
-  //     clickHandler: () => activateModal('configProject'),
-  //   }
-  // ]
+  const ProjectMenuItems = [
+    {
+      label: 'Edit Project',
+      icon: <Pencil1Icon />,
+      clickHandler: () => activateModal('editProject'),
+    },
+    {
+      label: 'Configure Settings',
+      icon: <GearIcon />,
+      clickHandler: () => activateModal('configProject'),
+    }
+  ]
 
 
   return (
@@ -64,8 +65,9 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
         <div data-id="header" 
           className="h-[40px] flex-none border-b border-neutral-800 bg-neutral-950"
         >
-          <div className="text-xl h-[40px] w-fit max-w-[200px] py-3 px-4 inline-flex items-center gap-x-2 bg-neutral-900  text-center border data-[selected=true]:border-b-0 border-neutral-800 text-white rounded-tr-xl data-[selected=true]:opacity-100 opacity-50 cursor-pointer leading-loose truncate ..." data-id={projectId} data-selected>
-          <span className='inline-block text-m font-medium leading-loose truncate ...'> {name}</span>
+          <div className="text-xl h-[40px] w-fit max-w-[250px] py-3 px-4 inline-flex items-center gap-x-2 bg-neutral-900  text-center border data-[selected=true]:border-b-0 border-neutral-800 text-white rounded-tr-xl data-[selected=true]:opacity-100 opacity-50 cursor-pointer leading-loose truncate ..." data-id={projectId} data-selected>
+            <span className='inline-block text-m font-medium leading-loose truncate ...'> {name}</span>
+            <MoreMenuButton menuItems={ProjectMenuItems} />
           </div>
         </div>
         <div className="min-w-full grow">
