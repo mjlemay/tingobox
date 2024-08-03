@@ -1,7 +1,6 @@
 import { defineConfig, mergeConfig } from 'vite';
 import {
   getBuildConfig,
-  external,
   pluginHotRestart,
 } from './vite.base.config.mjs';
 
@@ -32,7 +31,6 @@ export default defineConfig((env) => {
     ],
     resolve: {
       preserveSymlinks: true,
-
     },
   };
 
