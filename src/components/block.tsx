@@ -6,13 +6,14 @@ interface BlockProps {
     icon?: React.ReactNode;
     title?: string;
     menu?: React.ReactNode;
+    noMargin?: boolean
   }
   
   export default function Block(props:BlockProps):JSX.Element {
-    const { children, icon, menu, title } = props;
+    const { children, icon, menu, noMargin, title } = props;
   
     return (
-      <div className='m-2'>
+      <div className={noMargin ? 'm-0' : 'm-2'}>
         <div className='container mx-auto flex flex-column'
         >
           {icon && (

@@ -8,7 +8,7 @@ interface CardProps {
     const { children } = props;
   
     return (
-      <div className='rounded-lg  bg-neutral-800 p-2 m-2 drop-shadow-lg'>
+      <div className='rounded-lg bg-neutral-800 p-2 m-2 drop-shadow-lg'>
         {children}
       </div>
     )

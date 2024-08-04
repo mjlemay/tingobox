@@ -4,11 +4,8 @@ import ProjectForm from './projectForm';
 import ConfirmationForm from './confirmationForm';
 import { textCopy } from '../constants/language';
 import { defaultProject, basicProjectType } from '../constants/defaults';
-import MoreMenuButton from './moreMenuButton';
-import {
-  GearIcon,
-  Pencil1Icon,
-} from '@radix-ui/react-icons';
+import TabHeaders from './tabheaders';
+import { BackpackIcon } from '@radix-ui/react-icons'
 
 
 interface WorkspaceScreenProps {
@@ -19,7 +16,6 @@ interface WorkspaceScreenProps {
   
 export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element {
   const { selectedProject = defaultProject, screenActionHandler = ()=>{}} = props;
-  const { name, projectId } = selectedProject;
   const [ selectedModal, setSelectedModal ] = useState('');
   const [ openModal, setOpenModal ] = useState(false);
   const { confirmDelete } = textCopy;
@@ -45,38 +41,34 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
     });
   }
 
-  const ProjectMenuItems = [
-    {
-      label: 'Edit Project',
-      icon: <Pencil1Icon />,
-      clickHandler: () => activateModal('editProject'),
-    },
-    {
-      label: 'Configure Settings',
-      icon: <GearIcon />,
-      clickHandler: () => activateModal('configProject'),
+  const handleActions = (action:string, value:string, payload:basicProjectType) => {
+    switch (action) {
+      case 'openModal':
+          activateModal(value);
+        break;
+      case 'submit':
+        value === 'update' && submitUpdateProject(payload);
+        value === 'delete' && submitDeleteProject(payload);
+        break;
+      default:
+        break;
     }
-  ]
-
+  }
 
   return (
     <>
       <div className="flex flex-col min-w-full  min-h-full justify-top">
-        <div data-id="header" 
-          className="h-[40px] flex-none border-b border-neutral-800 bg-neutral-950"
-        >
-          <div className="text-xl h-[40px] w-fit max-w-[250px] py-3 px-4 inline-flex items-center gap-x-2 bg-neutral-900  text-center border data-[selected=true]:border-b-0 border-neutral-800 text-white rounded-tr-xl data-[selected=true]:opacity-100 opacity-50 cursor-pointer leading-loose truncate ..." data-id={projectId} data-selected>
-            <span className='inline-block text-m font-medium leading-loose truncate ...'> {name}</span>
-            <MoreMenuButton menuItems={ProjectMenuItems} />
-          </div>
-        </div>
-        <div className="min-w-full grow">
-        </div>
+      <TabHeaders projectTabs={[selectedProject]} actionHandler={handleActions} />
       </div>
 
 
       <div data-id="hidden-containers">
-        <Modal open={openModal} closeHandler={closeModal} description={selectedModal === 'configProject' ? 'Delete?' : ''} >
+        <Modal 
+          open={openModal}
+          closeHandler={closeModal}
+          title={selectedModal === 'configProject' ? 'Configure » Delete' : 'Edit Project'}
+          icon={<BackpackIcon />}
+        >
           {selectedModal === 'editProject' && (
             <ProjectForm 
               submitHandler={(payload:basicProjectType)=> submitUpdateProject(payload)} 

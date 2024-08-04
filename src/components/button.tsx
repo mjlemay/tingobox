@@ -2,18 +2,19 @@ import React from 'react';
 
 interface MenuItemProps {
     children?: React.ReactNode;
-    iconBGColor?: string;
     label?: string;
+    type?: "submit" | "reset" | "button";
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
     handleAction?: Function;
 }
   
   export default function Button(props:MenuItemProps):JSX.Element {
-    const { handleAction, children, iconBGColor, label, prefix, suffix } = props;
+    const { handleAction, children, label, prefix, suffix, type } = props;
 
     return (
-      <button className={`flex flex-row gap-2 hover:bg-indigo-300 items-center justify-center rounded-lg cursor-pointer ${iconBGColor ?  iconBGColor : 'bg-stone-200'}`}
+      <button className={`flex flex-row ${prefix ? '' :  'pl-2 pr-1'} ${suffix ? '' :  'pr-2 pl-1'} hover:bg-indigo-300 items-center justify-center rounded-lg cursor-pointer bg-neutral-400`}
+      type={type}
       onClick={() => handleAction && handleAction()}
       >
         {(prefix && 

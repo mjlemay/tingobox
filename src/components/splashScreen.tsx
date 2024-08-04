@@ -4,6 +4,8 @@ import ProjectForm from './projectForm.tsx';
 import { createProjectType } from '../constants/defaults.ts';
 import Card from './card.tsx';
 import ImageButton from './imageButton.tsx';
+import Block from './block.tsx';
+import { BackpackIcon, Cross2Icon } from '@radix-ui/react-icons';
 
 interface SplashScreenProps {
   children?: React.ReactNode;
@@ -26,8 +28,17 @@ interface SplashScreenProps {
     const handleSubmit = async (payload:createProjectType) => {
       await projectData.addProject(payload);
     }
+
+    const closeBtn = (
+      <button
+          className="w-[40px] h-[40px] inline-flex items-center justify-center cursor-pointer outline-none"
+          aria-label="Close"
+          onClick={() => setView('home')}
+      >
+          <Cross2Icon />
+      </button>
+      );
   
-    //TODO: WRITE CARD ELEMENT WRAPPER
     return (
       <Card>
           <div
@@ -44,7 +55,11 @@ interface SplashScreenProps {
             <div className='grow w-full'>
               <div className="flex flex-col h-[600px] justify-top">
                 {view == 'home' && <HomeView actionHandler={handleView} />}
-                {view == 'newProject' && <ProjectForm submitHandler={handleSubmit} exitHandler={handleView} />}
+                {view == 'newProject' &&  (
+                  <Block title="Create New Project" icon={<BackpackIcon />} menu={closeBtn} >
+                    <ProjectForm submitHandler={handleSubmit} exitHandler={handleView} />
+                  </Block>
+                )}
                 {children}
               </div>
             </div>

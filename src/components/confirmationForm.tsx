@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from './button';
 import { basicProjectType } from '../constants/defaults';
+import ThumbsDownIcon from '../svg/thumbsDownIcon';
+import { CircleBackslashIcon } from '@radix-ui/react-icons';
 
 interface BlankProps {
     children?: React.ReactNode;
@@ -19,10 +21,14 @@ interface BlankProps {
   
     return (
       <>
-        {children}
+        <p className='p-4'>
         {confirmMessage}
-        <Button handleAction={() => denyHandler()}>Deny</Button>
-        <Button handleAction={() => submitConfirm()}>Confirm</Button>
+        </p>
+        <div className='flex flex-row gap-4 justify-end'>
+          <Button suffix={<CircleBackslashIcon />} handleAction={() => denyHandler()}>Cancel</Button>
+          <Button suffix={<ThumbsDownIcon />}  handleAction={() => submitConfirm()}>Confirm</Button>
+        </div>
+        {children}
       </>
     )
   }
