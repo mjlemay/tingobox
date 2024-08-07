@@ -48,7 +48,7 @@ export default function ProjectForm(props:NewProjectProps):JSX.Element {
 
   const createNewProject = () => {
     validateForm(form);
-    if (!!Object.keys(errors).length) {
+    if (Object.keys(errors).length <= 0) {
       submitHandler(form);
       exitHandler('view','home');
     }

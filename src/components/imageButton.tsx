@@ -19,9 +19,10 @@ interface ImageButtonProps {
         style={{width: imgWidth, height: imgHeight}}
         onClick={() => handleAction && handleAction()}
       >
-        <div className='bg-gradient-to-t from-black via-transparent overflow-hidden absolute min-h-[100%] min-w-[100%]'>
-            {image ? image : children}
+        <div className='overflow-hidden absolute min-h-[100%] min-w-[100%]'>
+          {image ? image : children}
         </div>
+        <div className='bg-gradient-to-t from-slate-800 via-transparent overflow-hidden absolute min-h-[100%] min-w-[100%]' />
         <div className='flex align-bottom items-end flex-row-reverse min-h-[100%]'
         >
             {label && <div className="relative text-white text-2xl leading-5 font-medium p-2">{label}</div>}

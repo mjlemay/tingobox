@@ -5,6 +5,9 @@ import { createProjectType } from '../constants/defaults.ts';
 import Card from './card.tsx';
 import ImageButton from './imageButton.tsx';
 import Block from './block.tsx';
+import CappyParty from '../svg/cappyParty.tsx';
+import CappySport from '../svg/cappySport.tsx';
+import CappyCalendar from '../svg/cappyCalendar.tsx';
 import { BackpackIcon, Cross2Icon } from '@radix-ui/react-icons';
 
 interface SplashScreenProps {
@@ -47,9 +50,9 @@ interface SplashScreenProps {
           <div className='flex flex-row items-center'>
             <div className='grow w-full'>
               <div className='flex flex-col h-[600px]'>
-                <ImageButton width={350} height={200} label="Create A New Project" handleAction={() => setView('newProject')} />
-                <ImageButton width={350} height={200} label="Start From A Template" handleAction={() => console.log('newTemplate')} />
-                <ImageButton width={350} height={200} label="Select an Event" handleAction={() => console.log('viewEvents')} />
+                <ImageButton width={350} height={200} image={<CappySport />}  label="Create A New Project" handleAction={() => setView('newProject')} />
+                <ImageButton width={350} height={200} image={<CappyParty />} label="Start From A Template" handleAction={() => console.log('newTemplate')} />
+                <ImageButton width={350} height={200} image={<CappyCalendar />} label="Select an Event" handleAction={() => console.log('viewEvents')} />
               </div>
             </div>
             <div className='grow w-full'>
