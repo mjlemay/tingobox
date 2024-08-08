@@ -31,7 +31,7 @@ interface TabHeadersProps {
   
     return (
         <div data-id="header" 
-          className="h-[40px] flex-none border-b border-neutral-800 bg-neutral-950"
+          className="h-[40px] w-full flex-none border-b border-neutral-800 bg-neutral-950"
         >
             { projectTabs && projectTabs.map((projectTab, index) => {
                 const { projectId, name } = projectTab;

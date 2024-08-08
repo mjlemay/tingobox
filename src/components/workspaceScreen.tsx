@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Modal from './modal';
 import ProjectForm from './projectForm';
+import Block from './block';
+import Card from './card';
+import RuleIcon from '../svg/ruleIcon';
 import ConfirmationForm from './confirmationForm';
 import { textCopy } from '../constants/language';
 import { defaultProject, basicProjectType } from '../constants/defaults';
@@ -56,9 +59,19 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
   }
 
   return (
-    <>
-      <div className="flex flex-col min-w-full  min-h-full justify-top">
-      <TabHeaders projectTabs={[selectedProject]} actionHandler={handleActions} />
+    <div className="flex flex-row min-h-full min-w-full min-h-full justify-top flex-wrap">
+      <div className="flex-full min-w-full justify-top max-h-[40px]">
+        <TabHeaders projectTabs={[selectedProject]} actionHandler={handleActions} />
+      </div>
+      <div data-name="workLayout" className="min-w-full flex-full min-h-full gap-2 justify-top">
+          <div data-name="sidebar" className="max-w-[250px] justify-top">
+            <Card>
+              <Block title="Rulebooks" icon={<RuleIcon />} >
+              <span>my first rule</span>
+              </Block>
+            </Card>
+          </div>
+          <div data-name="stage"></div>
       </div>
 
 
@@ -86,6 +99,6 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
           )}
         </Modal>
       </div>
-    </>
+    </div>
   )
 }
