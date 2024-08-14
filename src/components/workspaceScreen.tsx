@@ -8,7 +8,9 @@ import ConfirmationForm from './confirmationForm';
 import { textCopy } from '../constants/language';
 import { defaultProject, basicProjectType } from '../constants/defaults';
 import TabHeaders from './tabheaders';
-import { BackpackIcon } from '@radix-ui/react-icons'
+import { BackpackIcon } from '@radix-ui/react-icons';
+import FlowGraph from './flowGraph';
+
 
 
 interface WorkspaceScreenProps {
@@ -72,7 +74,11 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
             </Card>
           </div>
           <div data-name="stage" className="grow min-h-full rounded-lg bg-neutral-950 mt-2 mb-2 mr-2">
-            <Block title="Core Rules" size="lg"  icon={<RuleIcon />} />
+            <Block title="Core Rules" size="lg"  icon={<RuleIcon />}>
+              <div className="flex flex-grow min-w-full min-h-full justify-stretch items-stretch">
+                <FlowGraph />
+              </div>
+            </Block>
           </div>
       </div>
 
