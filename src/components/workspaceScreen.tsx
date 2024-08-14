@@ -59,23 +59,25 @@ export default function WorkspaceScreen(props:WorkspaceScreenProps):JSX.Element 
   }
 
   return (
-    <div className="flex flex-row min-h-full min-w-full min-h-full justify-top flex-wrap">
+    <div className="flex flex-col min-h-full min-w-full min-h-full justify-top flex-wrap">
       <div className="flex-full min-w-full justify-top max-h-[40px]">
         <TabHeaders projectTabs={[selectedProject]} actionHandler={handleActions} />
       </div>
-      <div data-name="workLayout" className="min-w-full flex-full min-h-full gap-2 justify-top">
-          <div data-name="sidebar" className="max-w-[250px] justify-top">
+      <div data-name="workLayout" className="min-w-full justify-stretch items-stretch flex flex-row flex-grow min-h-full">
+          <div data-name="sidebar" className="min-w-[250px]">
             <Card>
               <Block title="Rulebooks" icon={<RuleIcon />} >
-              <span>my first rule</span>
+              <span>Core Rules</span>
               </Block>
             </Card>
           </div>
-          <div data-name="stage"></div>
+          <div data-name="stage" className="grow min-h-full rounded-lg bg-neutral-950 mt-2 mb-2 mr-2">
+            <Block title="Core Rules" size="lg"  icon={<RuleIcon />} />
+          </div>
       </div>
 
 
-      <div data-id="hidden-containers">
+      <div data-id="hidden-containers" className='absolute'>
         <Modal 
           open={openModal}
           closeHandler={closeModal}
