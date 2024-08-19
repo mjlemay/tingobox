@@ -8,11 +8,13 @@ interface FlowGraphProps {
 }
   
   export default function FlowGraph(props:FlowGraphProps):JSX.Element {
-    const { height = "200px", width = "200px" } = props;
+    const { height = "100%", width = "100%" } = props;
   
     return (
-    <div style={{height, width}}>
-        <ReactFlow>
+    <div style={{width, height}}>
+        <ReactFlow
+          fitView
+        >
           <Background />
           <Controls />
         </ReactFlow>
